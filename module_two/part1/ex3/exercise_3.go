@@ -1,8 +1,8 @@
-package exercise
+package main
 
 import "fmt"
 
-func ProgrammingTest() {
+func main() {
 	// 1. var 1nome string
 	/* Correção: Está incorreta pois está começando com número no nome da var */
 	// var nome1 string

@@ -1,8 +1,8 @@
-package exercise
+package main
 
 import "fmt"
 
-func Presentation() {
+func main() {
 	name := "Vinicius"
 	yearsOld := 22
 

@@ -1,8 +1,8 @@
-package exercise
+package main
 
 import "fmt"
 
-func DataTypes() {
+func main() {
 	// 1. var sobrenome string = "Silva"
 	/* Correta */
 

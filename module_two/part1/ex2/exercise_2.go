@@ -1,4 +1,4 @@
-package exercise
+package main
 
 import "fmt"
 
@@ -6,7 +6,7 @@ var temp float64
 var moisture uint8
 var hPa uint16
 
-func Weather() {
+func main() {
 	temp = 28.0
 	moisture = 75
 	hPa = 1013

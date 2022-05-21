@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
 	result1 := salaryCalc('C', 162)
-	result2 := salaryCalc('B', 176)
-	result3 := salaryCalc('A', 172)
+	result2 := salaryCalc('B', 161)
+	result3 := salaryCalc('A', 161)
 
 	fmt.Println(result1)
 	fmt.Println(result2)

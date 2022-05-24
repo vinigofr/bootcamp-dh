@@ -13,20 +13,20 @@ import (
 	2. Os arquivos devem ser salvos no formato CSV como mencionado acima
 */
 
-type product struct {
+type Product struct {
 	id         int
 	preco      float64
 	quantidade int
 	nome       string
 }
 
-var produtos []product
+var produtos []Product
 
 func main() {
-	produtos = append(produtos, product{id: 1, preco: 6.64, quantidade: 10, nome: "Lanche"})
-	produtos = append(produtos, product{id: 2, preco: 7.99, quantidade: 5, nome: "Suco"})
-	produtos = append(produtos, product{id: 3, preco: 5.19, quantidade: 2, nome: ""})
-	produtos = append(produtos, product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 1, preco: 6.64, quantidade: 10, nome: "Lanche"})
+	produtos = append(produtos, Product{id: 2, preco: 7.99, quantidade: 5, nome: "Suco"})
+	produtos = append(produtos, Product{id: 3, preco: 5.19, quantidade: 2, nome: ""})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
 
 	CreateCSV(produtos, "xablau")
 

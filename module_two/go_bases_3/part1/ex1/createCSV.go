@@ -15,7 +15,7 @@ import (
 	Para criação de arquivos CSV e como manipulá-los: https://webdamn.com/write-data-to-csv-file-using-golang/
 */
 
-func writeData(items []product, csvFile io.Writer) {
+func writeData(items []Product, csvFile io.Writer) {
 	var fields []string
 
 	baseStruct := reflect.Indirect(reflect.ValueOf(items[0]))
@@ -45,7 +45,7 @@ func writeData(items []product, csvFile io.Writer) {
 
 }
 
-func CreateCSV(produtos []product, filename string) {
+func CreateCSV(produtos []Product, filename string) {
 	filename = filename + ".csv"
 	csvFile, err := os.Create(filename)
 

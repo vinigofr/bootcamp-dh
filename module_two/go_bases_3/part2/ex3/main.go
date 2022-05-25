@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"sync"
+)
+
 type Produto struct {
 	nome       string
 	preco      float64
@@ -17,28 +22,34 @@ type Manutencao struct {
 	preco float64
 }
 
-func SomarProdutos(produtos []Produto) (pTotal float64) {
+var totalGlobal float64
+var waitG sync.WaitGroup
+
+func SomarProdutos(produtos []Produto) {
 	for _, product := range produtos {
-		pTotal += product.preco * float64(product.quantidade)
+		fmt.Println("Somando produtos")
+		totalGlobal += product.preco * float64(product.quantidade)
 	}
-	return
+	waitG.Done()
 }
 
-func SomarServicos(servicos []Servico) (pTotal float64) {
+func SomarServicos(servicos []Servico) {
 	for _, servico := range servicos {
+		fmt.Println("Somando serviços")
 		if servico.minTrabalhados < 30 {
-			pTotal += servico.preco * 30
+			totalGlobal += servico.preco * 30
 		}
-		pTotal += servico.preco * float64(servico.minTrabalhados)
+		totalGlobal += servico.preco * float64(servico.minTrabalhados)
 	}
-	return
+	waitG.Done()
 }
 
-func SomarManutencao(manutencoes []Manutencao) (pTotal float64) {
+func SomarManutencao(manutencoes []Manutencao) {
 	for _, manutencao := range manutencoes {
-		pTotal += manutencao.preco
+		fmt.Println("Somando manutenção")
+		totalGlobal += manutencao.preco
 	}
-	return
+	waitG.Done()
 }
 
 func main() {
@@ -64,7 +75,11 @@ func main() {
 		{nome: "Roteador", preco: 750, quantidade: 5},
 	}
 
-	SomarProdutos()
-	SomarServicos()
-	SomarManutencao()
+	waitG.Add(3)
+	go SomarManutencao(manutencoes)
+	go SomarServicos(servicos)
+	go SomarProdutos(produtos)
+	waitG.Wait()
+
+	fmt.Println(totalGlobal)
 }

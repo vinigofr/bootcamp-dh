@@ -26,7 +26,7 @@ func main() {
 	total += hamsterFunction(3)
 	total += tarantulaFunction(18)
 
-	fmt.Printf("No total, precisaremos de %.2f KG de\nalimentos para todos os animai", total/1000)
+	fmt.Printf("No total, precisaremos de %.2f KG de\nalimentos para todos os animais", total/1000)
 }
 
 var animalsMapFoodWight = map[string]float64{

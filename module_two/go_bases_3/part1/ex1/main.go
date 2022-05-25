@@ -27,6 +27,16 @@ func main() {
 	produtos = append(produtos, Product{id: 2, preco: 7.99, quantidade: 5, nome: "Suco"})
 	produtos = append(produtos, Product{id: 3, preco: 5.19, quantidade: 2, nome: ""})
 	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
+	produtos = append(produtos, Product{id: 4, preco: 5.19, quantidade: 2, nome: "Coisa"})
 
 	CreateCSV(produtos, "xablau")
 

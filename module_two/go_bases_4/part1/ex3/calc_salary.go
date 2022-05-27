@@ -13,13 +13,13 @@ var salarioMinimoErr customError
 var impostoNecessarioErr customError
 
 func main() {
-	salarioMinimoErr = errors.New("erro: o salário digitado não está dentro do valor mínimo")
+	salarioMinimoErr = errors.New("erro: o mínimo tributável é 15000")
 	impostoNecessarioErr = errors.New("Necessário pagamento de imposto")
 
-	salario = 15001
-
-	if salario < 15000 {
-		fmt.Println(salarioMinimoErr.Error())
+	salario = 14999
+	if salario <= 15000 {
+		err := fmt.Errorf("%s e o salário informado foi %d", salarioMinimoErr.Error(), salario)
+		fmt.Println(err)
 	} else {
 		fmt.Println(impostoNecessarioErr.Error())
 	}

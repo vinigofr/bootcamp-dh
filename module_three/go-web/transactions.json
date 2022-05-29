@@ -1,0 +1,34 @@
+[
+  {
+    "id": 0,
+    "transaction_code": 0,
+    "currency": "BRL",
+    "value": 1000.00,
+    "sender": "Santander",
+    "receiver": "Caixa Econômica Federal"
+  },
+  {
+    "id": 1,
+    "transaction_code": 1,
+    "currency": "BRL",
+    "value": 1000.00,
+    "sender": "Santander",
+    "receiver": "Caixa Econômica Federal"
+  },
+  {
+  "id": 2,
+  "transaction_code": 2,
+  "currency": "BRL",
+  "value": 1000.00,
+  "sender": "Santander",
+  "receiver": "Caixa Econômica Federal"
+  },
+  {
+  "id": 3,
+  "transaction_code": 3,
+  "currency": "BRL",
+  "value": 1000.00,
+  "sender": "Santander",
+  "receiver": "Caixa Econômica Federal"
+}
+]

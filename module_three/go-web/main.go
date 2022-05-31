@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
@@ -73,7 +72,6 @@ func QueryStringFilter(c *gin.Context) {
 			anyTransaction.Currency == currencyValue {
 			filteredTransactions = append(filteredTransactions, anyTransaction)
 		}
-		fmt.Println(idValue == string(anyTransaction.Id))
 	}
 
 	if len(filteredTransactions) == 0 {
@@ -88,7 +86,6 @@ func QueryStringFilter(c *gin.Context) {
 
 func GetAll(c *gin.Context) {
 	data, err := ioutil.ReadFile("transactions.json")
-
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"erro":        err.Error(),
@@ -104,7 +101,44 @@ func GetAll(c *gin.Context) {
 
 	c.JSON(http.StatusOK, transactions)
 }
+func GetOne(c *gin.Context) {
+	data, err := ioutil.ReadFile("transactions.json")
 
+	var parsedTransactions []transaction
+	var anyTransaction transaction
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Não foi possível ler o arquivo",
+		})
+	}
+
+	err = json.Unmarshal(data, &parsedTransactions)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Não foi possível fazer a conversão dos dados para exibi-los",
+		})
+	}
+
+	currentId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Parâmetro ID deve possuir somente números",
+		})
+	}
+
+	for _, currT := range parsedTransactions {
+		if currT.Id == currentId {
+			anyTransaction = currT
+			c.JSON(http.StatusOK, anyTransaction)
+			return
+		}
+	}
+
+	c.JSON(http.StatusNotFound, gin.H{
+		"message": "Nenhuma transação encontrada",
+	})
+}
 func helloWorld(c *gin.Context) {
 	username := c.Param("name")
 	c.JSON(http.StatusOK, gin.H{
@@ -119,6 +153,7 @@ func main() {
 	// https://stackoverflow.com/questions/39489175/how-to-define-a-go-gin-route-with-an-id-in-the-middle
 	req.GET("/hi/:name", helloWorld)
 	req.GET("/transactions", GetAll)
+	req.GET("/transactions/:id", GetOne)
 	req.GET("/search", QueryStringFilter)
 	req.Run()
 }

@@ -64,6 +64,7 @@ func QueryStringFilter(c *gin.Context) {
 		convertedTransactionCodeValue = 0
 	}
 
+	// Esta validação precisa ser melhorada pois não está filtrando da forma correta.
 	for _, anyTransaction := range transactions {
 		if anyTransaction.TransactionCode == convertedTransactionCodeValue ||
 			anyTransaction.Id == convertedId ||

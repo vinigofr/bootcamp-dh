@@ -3,7 +3,7 @@ package controllers
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/vinigofr/bootcamp-dh/module_three/go-web-2/product"
+	"github.com/vinigofr/bootcamp-dh/module_three/go-web-2/part1/product"
 	"net/http"
 )
 

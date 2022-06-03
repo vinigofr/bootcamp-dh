@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/vinigofr/bootcamp-dh/module_three/go-web-2/cmd/server/controllers"
-	"github.com/vinigofr/bootcamp-dh/module_three/go-web-2/product"
+	"github.com/vinigofr/bootcamp-dh/module_three/go-web-2/part1/cmd/server/controllers"
+	product2 "github.com/vinigofr/bootcamp-dh/module_three/go-web-2/part1/product"
 	"net/http"
 )
 
@@ -35,8 +35,8 @@ func ValidateToken() gin.HandlerFunc {
 func main() {
 	r := gin.Default()
 
-	repo := product.NewRepository()
-	service := product.NewService(repo)
+	repo := product2.NewRepository()
+	service := product2.NewService(repo)
 	productController := controllers.NewProduct(service)
 
 	productsGroup := r.Group("/products")
